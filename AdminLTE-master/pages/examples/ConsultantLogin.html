@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Let's Talk | Main </title>
+    <title>Let's Talk | Consultant Log in</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -30,7 +30,7 @@
         class="main-header navbar navbar-expand-md navbar-light navbar-white"
       >
         <div class="container">
-          <a href="main.html" class="navbar-brand">
+          <a href="../../index3.html" class="navbar-brand">
             <img
               src="../../dist/img/Let'sTalkLogo2.png"
               alt="Let's Talk Logo"
@@ -39,7 +39,6 @@
             />
             <span class="brand-text font-weight-light">Let's Talk</span>
           </a>
-
 
           <button
             class="navbar-toggler order-1"
@@ -85,6 +84,11 @@
                   <li>
                     <a href="#" class="dropdown-item"
                       >Consulted Registration</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="dropdown-item"
+                      >Consulted Login</a
                     >
                   </li>
                   <li>
@@ -148,22 +152,9 @@
         <!-- Main content -->
         <div class="content">
           <div class="hold-transition login-page">
-            <!-- <div class="login-box"> -->
-              <!-- <div>
-                          <a href="../../index3.html" class="navbar-brand">
-            <img
-              src="../../dist/img/Let'sTalkLogo2.png"
-              alt="Let's Talk Logo"
-              class="brand-image img-circle elevation-3"
-              style="opacity: 1"
-            />
-              </div> -->
-
-              <!-- /.login-logo -->
-              <div class="card">
-                <div class="register-box">
-                  <div class="register-logo">
-                              <a href="main.html" class="navbar-brand">
+            <div class="login-box">
+              <div class="login-logo">
+                  <a href="main.html" class="navbar-brand">
             <img
               src="../../dist/img/Let'sTalkLogo2.png"
               alt="Let's Talk Logo"
@@ -172,16 +163,66 @@
             />
             <span class="brand-text font-weight-light" style="font-size: larger; font-weight: bold;">Let's Talk</span>
           </a>
-                  </div>
-                </div>
-                <div class="span">
-                  <a href="login.html" class="text-center"><button type="button" class="btn btn-primary btn-lg btn-block">Admin</button><br>
-                  <a href="login.html" class="text-center"><button type="button" class="btn btn-primary btn-lg btn-block">Consultants</button><br>
-                  <a href="register.html" class="text-center"><button type="button" class="btn btn-primary btn-lg btn-block">Consulted</button></a><br>
+              </div>
+              <!-- /.login-logo -->
+              <div class="card">
+                <div class="card-body login-card-body">
+                  <p class="login-box-msg">Sign in as a Consultant</p>
+
+                  <form action="../../index3.html" method="post">
+                    <div class="input-group mb-3">
+                      <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Email"
+                      />
+                      <div class="input-group-append">
+                        <div class="input-group-text">
+                          <span class="fas fa-envelope"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Password"
+                      />
+                      <div class="input-group-append">
+                        <div class="input-group-text">
+                          <span class="fas fa-lock"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8">
+                        <div class="icheck-primary">
+                          <input type="checkbox" id="remember" />
+                          <label for="remember"> Remember Me </label>
+                        </div>
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block">
+                          Sign In
+                        </button>
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                  </form>
+
+                  <p class="mb-1">
+                    <a href="forgot-password.html">I forgot my password</a>
+                  </p>
+                  <p class="mb-0">
+                    <a href="ConsultantRegister.html" class="text-center"
+                      >If you want to be one of us click here</a
+                    >
+                  </p>
                 </div>
                 <!-- /.login-card-body -->
               </div>
-            <!-- </div> -->
+            </div>
             <!-- /.col-md-6 -->
           </div>
         </div>
