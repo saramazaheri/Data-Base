@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Let's Talk | Forget Password</title>
+    <title>Let's Talk | Admin Login</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -82,16 +82,20 @@
                     <a href="ConsultantLogin.html" class="dropdown-item">Consultant Login</a>
                   </li>
                   <li>
-                    <a href="ConsultedRegister.html" class="dropdown-item"
+                    <a href="#" class="dropdown-item"
                       >Consulted Registration</a
                     >
                   </li>
                   <li>
-                    <a href="ConsultedLogin.html" class="dropdown-item"
+                    <a href="#" class="dropdown-item"
                       >Consulted Login</a
                     >
                   </li>
-
+                  <li>
+                    <a href="#" class="dropdown-item"
+                      >Consulted Login</a
+                    >
+                  </li>
                   <li class="dropdown-divider"></li>
                 </ul>
               </li>
@@ -148,9 +152,9 @@
         <!-- Main content -->
         <div class="content">
           <div class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-                              <a href="index.html" class="navbar-brand">
+            <div class="login-box">
+              <div class="login-logo">
+                  <a href="index.html" class="navbar-brand">
             <img
               src="../../dist/img/Let'sTalkLogo2.png"
               alt="Let's Talk Logo"
@@ -159,47 +163,62 @@
             />
             <span class="brand-text font-weight-light" style="font-size: larger; font-weight: bold;">Let's Talk</span>
           </a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">
-        You forgot your password? Here you can easily retrieve a new password.
-      </p>
+              </div>
+              <!-- /.login-logo -->
+              <div class="card">
+                <div class="card-body login-card-body">
+                  <p class="login-box-msg">Admin Login</p>
 
-      <form action="recover-password.html" method="post">
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email" />
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+                  <form action="../../index3.html" method="post">
+                    <div class="input-group mb-3">
+                      <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Email"
+                      />
+                      <div class="input-group-append">
+                        <div class="input-group-text">
+                          <span class="fas fa-envelope"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Password"
+                      />
+                      <div class="input-group-append">
+                        <div class="input-group-text">
+                          <span class="fas fa-lock"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8">
+                        <div class="icheck-primary">
+                          <input type="checkbox" id="remember" />
+                          <label for="remember"> Remember Me </label>
+                        </div>
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block">
+                          Sign In
+                        </button>
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                  </form>
+
+                  <p class="mb-1">
+                    <a href="admin-forget-pass.html">I forgot my password</a>
+                  </p>
+                </div>
+                <!-- /.login-card-body -->
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">
-              Request new password
-            </button>
-          </div>
-          <!-- /.col -->
-        </div>
-      </form>
-
-      <p class="mt-3 mb-1">
-        <a href="ConsultedLogin.html">Login</a>
-      </p>
-      <p class="mb-0">
-        <a href="ConsultedRegister.html" class="text-center"
-          >Register a new membership</a
-        >
-      </p>
-    </div>
-    <!-- /.login-card-body -->
-  </div>
-</div>
-<!-- /.login-box -->
-
+            <!-- /.col-md-6 -->
           </div>
         </div>
         <!-- /.container-fluid -->
