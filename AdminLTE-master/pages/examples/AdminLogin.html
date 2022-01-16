@@ -169,11 +169,13 @@
                 <div class="card-body login-card-body">
                   <p class="login-box-msg">Admin Login</p>
 
-                  <form action="../../index3.html" method="post">
+                  <form action="registration/adminlogin.php" method="post">
                     <div class="input-group mb-3">
                       <input
                         type="email"
                         class="form-control"
+                        name="email"
+                        required
                         placeholder="Email"
                       />
                       <div class="input-group-append">
@@ -186,6 +188,8 @@
                       <input
                         type="password"
                         class="form-control"
+                        name="password"
+                        required
                         placeholder="Password"
                       />
                       <div class="input-group-append">
@@ -203,7 +207,7 @@
                       </div>
                       <!-- /.col -->
                       <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">
+                        <button type="submit" class="btn btn-primary btn-block" name="">
                           Sign In
                         </button>
                       </div>
