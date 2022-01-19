@@ -14,15 +14,14 @@
         $stmt_result = $stmt->get_result();
         if($stmt_result->num_rows > 0) {
             $data = $stmt_result->fetch_assoc();
-            if($password === $data['password']) {
+            if(password_verify($password, $data['password'])) {
                 echo "<h2>Login Successful</h2>";
-                //header("Location: adminhome.php");
-                //to do
+                header("Location: ../ConsulteeRegAcc.html");
             } else {
-                echo "<h2>Login Failed1</h2>";
+                echo "<script>alert('Wrong Email or Password');</script>";
             }
         } else {
-            echo "<h2>Login Failed2</h2>";
+            echo "<script>alert('Wrong Email or Password');</script>";
         }
     }
 ?>
