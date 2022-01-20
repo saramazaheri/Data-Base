@@ -32,7 +32,7 @@
         class="main-header navbar navbar-expand-md navbar-light navbar-white"
       >
         <div class="container">
-          <a href="index.html" class="navbar-brand">
+          <a href="index.php" class="navbar-brand">
             <img
               src="../../dist/img/Let'sTalkLogo2.png"
               alt="Let's Talk Logo"
@@ -58,10 +58,10 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.php" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
-                <a href="contact-us.html" class="nav-link">Contact</a>
+                <a href="contact-us.php" class="nav-link">Contact</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -78,18 +78,18 @@
                   class="dropdown-menu border-0 shadow"
                 >
                   <li>
-                    <a href="ConsultantRegister.html" class="dropdown-item">Consultant Registeration </a>
+                    <a href="ConsultantRegister.php" class="dropdown-item">Consultant Registeration </a>
                   </li>
                   <li>
-                    <a href="ConsultantLogin.html" class="dropdown-item">Consultant Login</a>
+                    <a href="ConsultantLogin.php" class="dropdown-item">Consultant Login</a>
                   </li>
                   <li>
-                    <a href="ConsulteeRegister.html" class="dropdown-item"
+                    <a href="ConsulteeRegister.php" class="dropdown-item"
                       >Consultee Registration</a
                     >
                   </li>
                   <li>
-                    <a href="ConsulteeLogin.html" class="dropdown-item"
+                    <a href="ConsulteeLogin.php" class="dropdown-item"
                       >Consultee Login</a
                     >
                   </li>
@@ -125,7 +125,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="AdminPanel.html" class="d-block">Sara Mazaheri</a>
+          <a href="AdminPanel.php" class="d-block">Sara Mazaheri</a>
         </div>
       </div>
       <nav class="mt-2">
@@ -135,7 +135,7 @@
                   <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-              <a href="Admin1.html" class="nav-link">
+              <a href="Admin1.php" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Consultants Information
@@ -147,10 +147,10 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-              <a href="Admin3.html" class="nav-link">
+              <a href="ConsultantRegister.php" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
-                  Consultace Job Requests
+                  Consultant Register
                 </p>
               </a>
             </li>
@@ -159,7 +159,7 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-              <a href="Admin4.html" class="nav-link">
+              <a href="Admin4.php" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
                   Consultees Information
@@ -512,7 +512,7 @@
         <!-- Default to the left -->
         <strong
           >Copyright &copy; 2021-....
-          <a href="index.html">Let's Talk.Com</a>.</strong
+          <a href="index.php">Let's Talk.Com</a>.</strong
         >
         All rights reserved.
       </footer>

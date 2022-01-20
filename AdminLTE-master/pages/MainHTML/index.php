@@ -30,7 +30,7 @@
         class="main-header navbar navbar-expand-md navbar-light navbar-white"
       >
         <div class="container">
-          <a href="index.html" class="navbar-brand">
+          <a href="index.php" class="navbar-brand">
             <img
               src="../../dist/img/Let'sTalkLogo2.png"
               alt="Let's Talk Logo"
@@ -57,10 +57,10 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.php" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
-                <a href="contact-us.html" class="nav-link">Contact</a>
+                <a href="contact-us.php" class="nav-link">Contact</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -159,7 +159,7 @@
               <div class="card">
                 <div class="register-box">
                   <div class="register-logo">
-                              <a href="index.html" class="navbar-brand">
+                              <a href="index.php" class="navbar-brand">
             <img
               src="../../dist/img/Let'sTalkLogo2.png"
               alt="Let's Talk Logo"
@@ -198,7 +198,7 @@
         <!-- Default to the left -->
         <strong
           >Copyright &copy; 2021-....
-          <a href="index.html">Let's Talk.Com</a>.</strong
+          <a href="index.php">Let's Talk.Com</a>.</strong
         >
         All rights reserved.
       </footer>
