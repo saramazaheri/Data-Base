@@ -77,18 +77,18 @@
                   class="dropdown-menu border-0 shadow"
                 >
                   <li>
-                    <a href="ConsultantRegister.html" class="dropdown-item">Consultant Registeration </a>
+                    <a href="ConsultantRegister.php" class="dropdown-item">Consultant Registeration </a>
                   </li>
                   <li>
-                    <a href="ConsultantLogin.html" class="dropdown-item">Consultant Login</a>
+                    <a href="ConsultantLogin.php" class="dropdown-item">Consultant Login</a>
                   </li>
                   <li>
-                    <a href="ConsulteeRegister.html" class="dropdown-item"
+                    <a href="ConsulteeRegister.php" class="dropdown-item"
                       >Consultee Registration</a
                     >
                   </li>
                   <li>
-                    <a href="ConsulteeLogin.html" class="dropdown-item"
+                    <a href="ConsulteeLogin.php" class="dropdown-item"
                       >Consultee Login</a
                     >
                   </li>
@@ -171,9 +171,9 @@
                   </div>
                 </div>
                 <div class="span container">
-                  <a href="AdminLogin.html" class="text-center"><button type="button" class="btn btn-primary btn-lg btn-block">Admin</button><br>
-                  <a href="ConsultantLogin.html" class="text-center"><button type="button" class="btn btn-primary btn-lg btn-block">Consultants</button><br>
-                  <a href="ConsulteeLogin.html" class="text-center"><button type="button" class="btn btn-primary btn-lg btn-block">Consultee</button></a><br>
+                  <a href="AdminLogin.php" class="text-center"><button type="button" class="btn btn-primary btn-lg btn-block">Admin</button><br>
+                  <a href="ConsultantLogin.php" class="text-center"><button type="button" class="btn btn-primary btn-lg btn-block">Consultants</button><br>
+                  <a href="ConsulteeLogin.php" class="text-center"><button type="button" class="btn btn-primary btn-lg btn-block">Consultee</button></a><br>
                 </div>
                 <!-- /.login-card-body -->
               </div>
