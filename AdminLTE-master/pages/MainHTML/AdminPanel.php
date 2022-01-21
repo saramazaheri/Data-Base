@@ -125,7 +125,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="AdminPanel.php" class="d-block">Sara Mazaheri</a>
+          <a href="AdminPanel.php" class="d-block">Admin</a>
         </div>
       </div>
       <nav class="mt-2">
