@@ -269,10 +269,22 @@
           id="reservationdate"
           data-target-input="nearest"
         >
-        <input type="text" class="form-control datetimepicker-input" name="DateOfBirth" data-target="#reservationdate" placeholder="Date of your birth"/>
-        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+        <input type="text" class="form-control" name="DateOfBirth" placeholder="Date of your birth"/>
+        <div class="input-group-append" >
             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
+        </div>
+      </div>
+      <div class="input-group mb-1">
+        <div class="form-group">
+          <select class="form-control" name="Role1" required>
+            <option value="" disabled="disabled" selected>
+              Select Consultant role
+            </option>
+            <option value="Teen">Teen</option>
+            <option value="Child">Child</option>
+            <option value="Adult">Adult</option>
+          </select>
         </div>
       </div>
       <div class="input-group mb-3">

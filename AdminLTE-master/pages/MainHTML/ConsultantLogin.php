@@ -30,7 +30,7 @@
         class="main-header navbar navbar-expand-md navbar-light navbar-white"
       >
         <div class="container">
-          <a href="index.html" class="navbar-brand">
+          <a href="index.php" class="navbar-brand">
             <img
               src="../../dist/img/Let'sTalkLogo2.png"
               alt="Let's Talk Logo"
@@ -56,10 +56,10 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.php" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
-                <a href="contact-us.html" class="nav-link">Contact</a>
+                <a href="contact-us.php" class="nav-link">Contact</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -76,18 +76,18 @@
                   class="dropdown-menu border-0 shadow"
                 >
                   <li>
-                    <a href="ConsultantRegister.html" class="dropdown-item">Consultant Registeration </a>
+                    <a href="ConsultantRegister.php" class="dropdown-item">Consultant Registeration </a>
                   </li>
                   <li>
-                    <a href="ConsultantLogin.html" class="dropdown-item">Consultant Login</a>
+                    <a href="ConsultantLogin.php" class="dropdown-item">Consultant Login</a>
                   </li>
                   <li>
-                    <a href="ConsulteeRegister.html" class="dropdown-item"
+                    <a href="ConsulteeRegister.php" class="dropdown-item"
                       >Consultee Registration</a
                     >
                   </li>
                   <li>
-                    <a href="ConsulteeLogin.html" class="dropdown-item"
+                    <a href="ConsulteeLogin.php" class="dropdown-item"
                       >Consultee Login</a
                     >
                   </li>
@@ -144,7 +144,7 @@
           <div class="hold-transition login-page">
             <div class="login-box">
               <div class="login-logo">
-                  <a href="index.html" class="navbar-brand">
+                  <a href="index.php" class="navbar-brand">
             <img
               src="../../dist/img/Let'sTalkLogo2.png"
               alt="Let's Talk Logo"
@@ -159,7 +159,7 @@
                 <div class="card-body login-card-body">
                   <p class="login-box-msg">Sign in as a Consultant</p>
 
-                  <form action="registration/consultantlogin.php" method="post">
+                  <form action="registration/consultanconlogin.php" method="post">
                     <div class="input-group mb-3">
                       <input
                         type="email"
@@ -204,7 +204,7 @@
                   </form>
 
                   <p class="mb-1">
-                    <a href="consultant-forgot-password.html">I forgot my password</a>
+                    <a href="consultant-forgot-password.php">I forgot my password</a>
                   </p>
                 </div>
                 <!-- /.login-card-body -->
@@ -230,7 +230,7 @@
         <!-- Default to the left -->
         <strong
           >Copyright &copy; 2021-....
-          <a href="index.html">Let's Talk.Com</a>.</strong
+          <a href="index.php">Let's Talk.Com</a>.</strong
         >
         All rights reserved.
       </footer>
