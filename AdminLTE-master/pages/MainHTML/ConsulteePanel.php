@@ -4,6 +4,26 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || (!isset($_
     header("location: index.php");
     exit;
 }
+
+$con = new mysqli("localhost", "root", "", "consuling center");
+
+    if($con->connect_error){
+        die("Connection failed: " .$con->connect_error);
+    } else {
+        $stmt = $con->prepare("select FirstName, LastName, Email, Gender, DateOfBirth, PhoneNumber, Assets from consultee where email = ?");
+        $stmt->bind_param("s",  $_SESSION["email"]);
+        $stmt->execute();
+        $stmt_result = $stmt->get_result();
+        $data = $stmt_result->fetch_assoc();
+        $DateOfBirth = $data["DateOfBirth"];
+        $today = date("Y-m-d");
+        $diff = date_diff(date_create($DateOfBirth), date_create($today));
+    }
+    // $name = $con->prepare("select FirstName, LastName, Email from consultant where email=?");
+    // $name->bind_param("s", $_SESSION["email"]);
+    // $name->execute();
+    // $name_result = $name->get_result();
+    // $data1 = $name_result->fetch_assoc();
 ?>
 
 
@@ -45,7 +65,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || (!isset($_
         class="main-header navbar navbar-expand-md navbar-light navbar-white"
       >
         <div class="container">
-          <a href="index.html" class="navbar-brand">
+          <a href="index.php" class="navbar-brand">
             <img
               src="../../dist/img/Let'sTalkLogo2.png"
               alt="Let's Talk Logo"
@@ -71,10 +91,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || (!isset($_
             <!-- Left navbar links -->
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.php" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
-                <a href="contact-us.html" class="nav-link">Contact</a>
+                <a href="contact-us.php" class="nav-link">Contact</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -91,18 +111,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || (!isset($_
                   class="dropdown-menu border-0 shadow"
                 >
                   <li>
-                    <a href="ConsultantRegister.html" class="dropdown-item">Consultant Registeration </a>
+                    <a href="ConsultantRegister.php" class="dropdown-item">Consultant Registeration </a>
                   </li>
                   <li>
-                    <a href="ConsultantLogin.html" class="dropdown-item">Consultant Login</a>
+                    <a href="ConsultantLogin.php" class="dropdown-item">Consultant Login</a>
                   </li>
                   <li>
-                    <a href="ConsulteeRegister.html" class="dropdown-item"
+                    <a href="ConsulteeRegister.php" class="dropdown-item"
                       >Consultee Registration</a
                     >
                   </li>
                   <li>
-                    <a href="ConsulteeLogin.html" class="dropdown-item"
+                    <a href="ConsulteeLogin.php" class="dropdown-item"
                       >Consultee Login</a
                     >
                   </li>
@@ -138,7 +158,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || (!isset($_
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="#" class="d-block">Sara Mazaheri</a>
+          <a href="#" class="d-block"><?php echo $data['FirstName']." ".$data['LastName'];?></a>
         </div>
       </div>
       <nav class="mt-2">
@@ -147,7 +167,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || (!isset($_
                   <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-              <a href="consultee-profile.html" class="nav-link">
+              <a href="ConsulteePanel.php" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Profile
@@ -162,7 +182,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || (!isset($_
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="pick-consultant.html" class="nav-link">
+            <a href="pick-consultant.php" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Consultant Members
@@ -170,19 +190,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || (!isset($_
             </a>
           </li>
         </ul>
-      </nav>
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item">
-              <a href="consultee-invoice.html" class="nav-link">
-                <i class="nav-icon fas fa-edit"></i>
-                <p>
-                  Invoice
-                </p>
-              </a>
-            </li>
-          </ul>
-        </nav>
+      
 
 
       <!-- /.sidebar-menu -->
@@ -217,143 +225,100 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || (!isset($_
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
-                <h3 class="profile-username text-center">Sara Mazaheri</h3>
+                <h3 class="profile-username text-center"><?php echo $data['FirstName']." ".$data['LastName'];?></h3>
                 <ul class="list-group list-group-unbordered mb-3">
+                  
                   <li class="list-group-item">
-                    <b>ID</b> <a class="float-right">1,322</a>
+                    <b>Gender</b> <a class="float-right"><?php echo $data['Gender'];?></a>
                   </li>
                   <li class="list-group-item">
-                    <b>Gender</b> <a class="float-right">Female</a>
+                    <b>Age</b> <a class="float-right"><?php echo $diff->format('%y'); ?></a>
                   </li>
                   <li class="list-group-item">
-                    <b>Age</b> <a class="float-right">21</a>
+                    <b>Date of Birth</b> <a class="float-right"><?php echo $data['DateOfBirth']; ?></a>
                   </li>
                   <li class="list-group-item">
-                    <b>Date of Birth</b> <a class="float-right">27/10/2000</a>
+                    <b>Phone Number</b> <a class="float-right"><?php echo $data['PhoneNumber']; ?></a>
                   </li>
                   <li class="list-group-item">
-                    <b>Phone Number</b> <a class="float-right">0910177344673</a>
+                    <b>Email Adress</b> <a class="float-right"><?php echo $data['Email']; ?></a>
                   </li>
                   <li class="list-group-item">
-                    <b>Email Adress</b> <a class="float-right">m.sara.mazaheri@gmail.com</a>
+                    <b>Wallet</b> <a class="float-right"><?php echo $data['Assets']; ?></a>
                   </li>
                 </ul>
-
-                <a href="#" class="btn btn-primary btn-block"><b>Edit Profile</b></a>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
 
-            <!-- About Me Box -->
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">About Your Consulant</h3>
-              </div>
-              <!-- /.card-header -->
-
-              <div class="card-body">
-                <strong><i class="fas fa-file-signature"></i> Full Name</strong>
-
-                <p class="text-muted">
-                  Sara Mazaheri
-                </p>
-                <hr>
-                <strong><i class="fas fa-id-card"></i> Consulant ID</strong>
-
-                <p class="text-muted">
-                  001225
-                </p>
-
-                <hr>
-                <strong><i class="fas fa-book mr-1"></i> Role</strong>
-
-                <p class="text-muted">
-                  Adults
-                </p>
-
-                <hr>
-                <strong><i class="fas fa-phone"></i> Phone Number</strong>
-
-                <p class="text-muted">0910177354375</p>
-
-                <hr>
-                <strong><i class="fas fa-at"></i> Email Adress</strong>
-
-                <p class="text-muted">m.sara.mazaheri@gmail.com</p>
-
-                <hr>
-
-                <strong><i class="fas fa-pencil-alt mr-1"></i> Gender</strong>
-
-                <p class="text-muted">Female</p>
-
-                <hr>
-
-                <strong><i class="far fa-file-alt mr-1"></i> Date of Birth</strong>
-
-                <p class="text-muted">27/10/2000</p>
-                <a href="#" class="btn btn-primary btn-block"><b>Take another Consultant!</b></a>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+            
           </div>
           <!-- /.col -->
           <div class="col-md-9">
             <div class="card">
               <div class="card-header p-2">
-                <h3>Take Your Appointment</h3>
+                <h3>Your Assets</h3>
                 <div class="form-group">
-                  <label>Date and time:</label>
-                    <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-target="#reservationdatetime"/>
-                        <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  <label>Put some money on your wallet:</label>
+                  <form action="registration/consulteewallet.php" method="post">
+                    <div class="input-group">
+                        <input type="text" name="Assets" class="form-control" required/>
+                        <div class="input-group-append">
+                            <div class="input-group-text"><i class="fa fa-wallet"></i></div>
                         </div>
                     </div>
                 </div>
-                <a href="../examples/invoice.html" class="btn btn-primary btn-block"><b>Submit!</b></a>
+                <input type="submit" name="Update" value="Submit!" class="btn btn-primary btn-block"/>
+              </form>
               </div><!-- /.card-header -->
               <div class="card-body">
                   <h3>History</h3>
                 <div class="card-body p-0">
-                  <table class="table">
+                <table class="table">
                     <thead>
                       <tr>
                         <th>Consultant Name</th>
+                        <th>Consultant Email</th>
+                        <th>Phone Number</th>
                         <th>Date/Time</th>
+                        <th>Financial</th>
                         <th></th>
                       </tr>
                     </thead>
+                    
+                    <?php
+                    //made history for consultee panel that shows all the booking
+                    $con = mysqli_connect("localhost", "root", "", "consuling center");
+                    //Natural join
+                    $query = "select * from attends_to,consultant where consultant.email = attends_to.Consultant_Email and  attends_to.Consultee_Email = '".$_SESSION['email']."'";
+
+                    
+                    $result = mysqli_query($con, $query) or die(mysqli_error());
+                    while($row=mysqli_fetch_array($result)):
+                    
+                    ?>
                     <tbody>
 
                       <tr>
-                        <td>Functional-requirements.docx</td>
-                        <td>49.8005 kb</td>
-
-                      <tr>
-                        <td>UAT.pdf</td>
-                        <td>28.4883 kb</td>
-
-                      <tr>
-                        <td>Email-from-flatbal.mln</td>
-                        <td>57.9003 kb</td>
-
-                      <tr>
-                        <td>Logo.png</td>
-                        <td>50.5190 kb</td>
-
-                      <tr>
-                        <td>Contract-10_12_2014.docx</td>
-                        <td>44.9715 kb</td>
-
+                  
+                        <td><?php echo $row[4]." ".$row[5];?></td>
+                        <td><?php echo $row[1] ?></td>
+                        <td><?php echo $row[8] ?></td>
+                        <td><?php echo $row[2] ?></td>
+                        <td><?php echo $row[3] ?></td>
+                        
                     </tbody>
+                    <?php endwhile; ?>
                   </table>
+                  
                 </div>
+                
                 <!-- /.card-body -->
               </div>
+              
                     </div>
+                    
                     <!-- /.post -->
                   </div>
 
@@ -422,140 +387,5 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || (!isset($_
 <script src="../../plugins/dropzone/min/dropzone.min.js"></script>
 <!-- satin App -->
 <script src="../../dist/js/satin.min.js"></script>
-
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
-
-    //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Money Euro
-    $('[data-mask]').inputmask()
-
-    //Date picker
-    $('#reservationdate').datetimepicker({
-        format: 'L'
-    });
-
-    //Date and time picker
-    $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
-
-    //Date range picker
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      locale: {
-        format: 'MM/DD/YYYY hh:mm A'
-      }
-    })
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-      {
-        ranges   : {
-          'Today'       : [moment(), moment()],
-          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
-      },
-      function (start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
-    )
-
-    //Timepicker
-    $('#timepicker').datetimepicker({
-      format: 'LT'
-    })
-
-    //Bootstrap Duallistbox
-    $('.duallistbox').bootstrapDualListbox()
-
-    //Colorpicker
-    $('.my-colorpicker1').colorpicker()
-    //color picker with addon
-    $('.my-colorpicker2').colorpicker()
-
-    $('.my-colorpicker2').on('colorpickerChange', function(event) {
-      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-    })
-
-    $("input[data-bootstrap-switch]").each(function(){
-      $(this).bootstrapSwitch('state', $(this).prop('checked'));
-    })
-
-  })
-  // BS-Stepper Init
-  document.addEventListener('DOMContentLoaded', function () {
-    window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-  })
-
-  // DropzoneJS Demo Code Start
-  Dropzone.autoDiscover = false
-
-  // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-  var previewNode = document.querySelector("#template")
-  previewNode.id = ""
-  var previewTemplate = previewNode.parentNode.innerHTML
-  previewNode.parentNode.removeChild(previewNode)
-
-  var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-    url: "/target-url", // Set the url
-    thumbnailWidth: 80,
-    thumbnailHeight: 80,
-    parallelUploads: 20,
-    previewTemplate: previewTemplate,
-    autoQueue: false, // Make sure the files aren't queued until manually added
-    previewsContainer: "#previews", // Define the container to display the previews
-    clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
-  })
-
-  myDropzone.on("addedfile", function(file) {
-    // Hookup the start button
-    file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file) }
-  })
-
-  // Update the total progress bar
-  myDropzone.on("totaluploadprogress", function(progress) {
-    document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
-  })
-
-  myDropzone.on("sending", function(file) {
-    // Show the total progress bar when upload starts
-    document.querySelector("#total-progress").style.opacity = "1"
-    // And disable the start button
-    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
-  })
-
-  // Hide the total progress bar when nothing's uploading anymore
-  myDropzone.on("queuecomplete", function(progress) {
-    document.querySelector("#total-progress").style.opacity = "0"
-  })
-
-  // Setup the buttons for all transfers
-  // The "add files" button doesn't need to be setup because the config
-  // `clickable` has already been specified.
-  document.querySelector("#actions .start").onclick = function() {
-    myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
-  }
-  document.querySelector("#actions .cancel").onclick = function() {
-    myDropzone.removeAllFiles(true)
-  }
-  // DropzoneJS Demo Code End
-</script>
 </body>
 </html>

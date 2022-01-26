@@ -5,6 +5,7 @@
 	$Email = $_POST['Email'];
     $PhoneNumber = $_POST['PhoneNumber'];
     $DateOfBirth = $_POST['DateOfBirth'];
+	$Role1 = $_POST['Role1'];
 	$Password = $_POST['Password'];
 	$ConfirmPassword = $_POST['ConfirmPassword'];
 
@@ -22,18 +23,17 @@
         } else {
         if ($Password == $ConfirmPassword){
             $Password = password_hash($Password, PASSWORD_DEFAULT);
-            $stmt = $conn->prepare("insert into users (Email, Password, Role) values(?, ?, 'consultee')");
+            $stmt = $conn->prepare("insert into users (Email, Password, Role) values(?, ?, 'consultant')");
         $stmt->bind_param("ss", $Email, $Password);
         $execval = $stmt->execute();
-		$stmt = $conn->prepare("insert into consultee(FirstName, LastName, Gender, Email, PhoneNumber, DateOfBirth) values(?, ?, ?, ?, ?, ?)");
-		$stmt->bind_param("ssssss", $FirstName, $LastName, $Gender, $Email, $PhoneNumber, $DateOfBirth);
+		$stmt = $conn->prepare("insert into consultant(FirstName, LastName, Gender, Email, PhoneNumber, DateOfBirth, Role1) values(?, ?, ?, ?, ?, ?, ?)");
+		$stmt->bind_param("sssssss", $FirstName, $LastName, $Gender, $Email, $PhoneNumber, $DateOfBirth, $Role1);
 		$execval = $stmt->execute();
 		echo $execval;
 		echo "Registration successfully...";
-		header("Location: ../ConsulteeRegAcc.php");
 		$stmt->close();
 		$conn->close();
-		header("location:../ConsulteeRegAcc.php");
+		header("Location: ../ConsulteeRegAcc.php");
         }
     else{
         echo "Password and Confirm Password do not match";

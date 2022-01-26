@@ -159,7 +159,7 @@
                 <div class="card-body login-card-body">
                   <p class="login-box-msg">Sign in as a Consultant</p>
 
-                  <form action="registration/consultanconlogin.php" method="post">
+                  <form action="registration/consultantlogin.php" method="post">
                     <div class="input-group mb-3">
                       <input
                         type="email"

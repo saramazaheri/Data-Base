@@ -16,7 +16,13 @@
             $data = $stmt_result->fetch_assoc();
             if(password_verify($password, $data['password'])) {
                 echo "<h2>Login Successful</h2>";
-                header("Location: ../ConsulteeRegAcc.html");
+                session_start();
+                            
+                            // Store data in session variables
+                            $_SESSION["loggedin"] = true;
+                            $_SESSION["email"] = $email;
+                            $_SESSION["role"] = "consultee";
+                            header("location: ../ConsultantPanel.php");
             } else {
                 echo "<script>alert('Wrong Email or Password');</script>";
             }

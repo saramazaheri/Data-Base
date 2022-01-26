@@ -159,9 +159,9 @@
   <div class="card-body register-card-body">
     <p class="login-box-msg">Register a new membership</p>
 
-    <form action="ConsulteeRegAcc.html" method="post">
+    <form action="registration/consulteeregister.php" method="post">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="First name" />
+        <input type="text" class="form-control" name="FirstName" placeholder="First name" required />
         <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-user"></span>
@@ -169,7 +169,7 @@
         </div>
       </div>
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Last name" />
+        <input type="text" class="form-control" name="LastName" placeholder="Last name" required />
         <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-user"></span>
@@ -178,19 +178,19 @@
       </div>
       <div class="input-group mb-1">
         <div class="form-group">
-          <select class="form-control">
+          <select class="form-control" name="Gender" required>
             <option value="" disabled="disabled" selected>
               Select your gender
             </option>
-            <option>Female</option>
-            <option>Male</option>
-            <option>Other</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Other">Other</option>
           </select>
         </div>
       </div>
       
       <div class="input-group mb-3">
-        <input type="email" class="form-control" placeholder="Email" />
+        <input type="email" class="form-control" name="Email" placeholder="Email" required/>
         <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-envelope"></span>
@@ -198,7 +198,7 @@
         </div>
       </div>
       <div class="input-group mb-3">
-        <input name="inputphone" type="tel" class="form-control" placeholder="Phone Number" />
+        <input type="tel" class="form-control" name="PhoneNumber" placeholder="Phone Number" required/>
         <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-phone"></span>
@@ -208,26 +208,18 @@
       <div class="input-group mb-3">
         <div
           class="input-group date"
-          id="reservationdate"
+          
           data-target-input="nearest"
         >
-          <input
-            type="text"
-            class="form-control datetimepicker-input"
-            data-target="#reservationdate"
-            placeholder="Date of birth"
-          />
-          <div
-            class="input-group-append"
-            data-target="#reservationdate"
-            data-toggle="datetimepicker"
-          >
+        <input type="text" class="form-control ltr" name="DateOfBirth" id="DataofBirth" data-inputmask="'alias': 'yyyy-mm-dd'" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+        
+        <div class="input-group-append">
             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
         </div>
       </div>
       <div class="input-group mb-3">
-        <input type="password" class="form-control" placeholder="Password" />
+        <input type="password" class="form-control" name="Password" placeholder="Password" required/>
         <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-lock"></span>
@@ -238,7 +230,9 @@
         <input
           type="password"
           class="form-control"
+          name="ConfirmPassword"
           placeholder="Confirm password"
+          required
         />
         <div class="input-group-append">
           <div class="input-group-text">
@@ -301,11 +295,41 @@
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- satin App -->
-    <script src="../../dist/js/satin.min.js"></script>
+    <!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+
+<!-- Select2 -->
+<script src="../../plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="../../plugins/moment/moment.min.js"></script>
+<script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+<!-- date-range-picker -->
+<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="../../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- BS-Stepper -->
+<script src="../../plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<!-- dropzonejs -->
+<script src="../../plugins/dropzone/min/dropzone.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+    <script>
+      $(function () {
+        //Date picker
+        $('#reservationdate').datetimepicker({
+            format: 'L'
+        });
+      })
+    </script>
 
   </body>
 </html>

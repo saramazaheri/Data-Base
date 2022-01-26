@@ -1,3 +1,23 @@
+<?php
+session_start();
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || (!isset($_SESSION["role"])) || $_SESSION["role"] !== "consultee"){
+    header("location: index.php");
+    exit;
+}
+$con = new mysqli("localhost", "root", "", "consuling center");
+    if($con->connect_error){
+        die("Connection failed: " .$con->connect_error);
+    } else {
+        $stmt = $con->prepare("select FirstName, LastName, Email, PhoneNumber from consultee where email = ?");
+        $stmt->bind_param("s",  $_SESSION["email"]);
+        $stmt->execute();
+        $stmt_result = $stmt->get_result();
+        $data = $stmt_result->fetch_assoc();
+        
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +40,7 @@
         class="main-header navbar navbar-expand-md navbar-light navbar-white"
       >
         <div class="container">
-          <a href="index.html" class="navbar-brand">
+          <a href="index.php" class="navbar-brand">
             <img
               src="../../dist/img/Let'sTalkLogo2.png"
               alt="Let's Talk Logo"
@@ -46,10 +66,10 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.php" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
-                <a href="contact-us.html" class="nav-link">Contact</a>
+                <a href="contact-us.php" class="nav-link">Contact</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -66,18 +86,18 @@
                   class="dropdown-menu border-0 shadow"
                 >
                   <li>
-                    <a href="ConsultantRegister.html" class="dropdown-item">Consultant Registeration </a>
+                    <a href="ConsultantRegister.php" class="dropdown-item">Consultant Registeration </a>
                   </li>
                   <li>
-                    <a href="ConsultantLogin.html" class="dropdown-item">Consultant Login</a>
+                    <a href="ConsultantLogin.php" class="dropdown-item">Consultant Login</a>
                   </li>
                   <li>
-                    <a href="ConsulteeRegister.html" class="dropdown-item"
+                    <a href="ConsulteeRegister.php" class="dropdown-item"
                       >Consultee Registration</a
                     >
                   </li>
                   <li>
-                    <a href="ConsulteeLogin.html" class="dropdown-item"
+                    <a href="ConsulteeLogin.php" class="dropdown-item"
                       >Consultee Login</a
                     >
                   </li>
@@ -113,14 +133,14 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="#" class="d-block">Sara Mazaheri</a>
+          <a href="#" class="d-block"><?php echo $data['FirstName']." ".$data['LastName'];?></a>
         </div>
       </div>
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-header">Information</li>
           <li class="nav-item">
-              <a href="consultee-profile.html" class="nav-link">
+              <a href="ConsulteePanel.php" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Profile
@@ -132,7 +152,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="pick-consultant.html" class="nav-link">
+            <a href="pick-consultant.php" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Consultant Members
@@ -143,7 +163,7 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-              <a href="consultee-invoice.html" class="nav-link">
+              <a href="consultee-invoice.php" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
                   Invoice
@@ -201,11 +221,11 @@
                 <div class="col-sm-4 invoice-col">
                   From
                   <address>
-                    <strong>Sara Mazaheri</strong><br>
+                    <strong><?php echo $data['FirstName']." ".$data['LastName'];?></strong><br>
                     Tehran<br>
                     Iran<br>
-                    Phone: 09101773463<br>
-                    Email: m.sara.mazaheri@gmail.com
+                    Phone: <?php echo $data['PhoneNumber']; ?><br>
+                    Email: <?php echo $data['Email']; ?>
                   </address>
                 </div>
                 <!-- /.col -->

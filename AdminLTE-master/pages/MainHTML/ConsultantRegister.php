@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || (!isset($_SESSION["role"])) || $_SESSION["role"] !== "admin"){
+    header("location: index.php");
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -125,7 +134,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="AdminPanel.php" class="d-block">Sara Mazaheri</a>
+          <a href="AdminPanel.php" class="d-block">Admin</a>
         </div>
       </div>
       <nav class="mt-2">
@@ -273,6 +282,18 @@
         <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
+        </div>
+      </div>
+      <div class="input-group mb-1">
+        <div class="form-group">
+          <select class="form-control" name="Role" required>
+            <option value="" disabled="disabled" selected>
+              Select Consultant role
+            </option>
+            <option value="Teen">Teen</option>
+            <option value="Child">Child</option>
+            <option value="Adult">Adult</option>
+          </select>
         </div>
       </div>
       <div class="input-group mb-3">

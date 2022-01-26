@@ -16,12 +16,13 @@
             $data = $stmt_result->fetch_assoc();
             if(password_verify($password, $data['password'])) {
                 echo "<h2>Login Successful</h2>";
-                //to do
+                header("Location: ../AdminPanel.php");
             } else {
                 echo "<script>alert('Wrong Email or Password');</script>";
             }
         } else {
             echo "<script>alert('Wrong Email or Password');</script>";
+            
         }
     }
 ?>

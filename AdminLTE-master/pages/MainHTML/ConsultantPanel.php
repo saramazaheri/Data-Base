@@ -1,3 +1,23 @@
+<?php
+//session_start();
+//if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || (!isset($_SESSION["role"])) || $_SESSION["role"] !== "consultant"){
+//    header("location: index.php");
+ //   exit;
+//}
+$con = new mysqli("localhost", "root", "", "consuling center");
+    if($con->connect_error){
+        die("Connection failed: " .$con->connect_error);
+    } else {
+        $stmt = $con->prepare("select FirstName, LastName, Email from consultant where email = ?");
+        $stmt->bind_param("s",  $_SESSION["email"]);
+        $stmt->execute();
+        $stmt_result = $stmt->get_result();
+        $data = $stmt_result->fetch_assoc();
+        
+    }
+?>
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -148,7 +168,7 @@
             <div class="card card-widget widget-user">
               <!-- Add the bg color to the header using any of the bg-* classes -->
               <div class="widget-user-header bg-info">
-                <h3 class="widget-user-username">Alexander Pierce</h3>
+                <h3 class="widget-user-username"><?php echo $data['FirstName']." ".$data['LastName'];?></h3>
                 <h5 class="widget-user-desc">Adult Consultant</h5>
                 <h6 class="widget-user-desc">Monthly Information</h6>
               </div>
